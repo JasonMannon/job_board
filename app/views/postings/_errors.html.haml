@@ -1,0 +1,5 @@
+- if @posting.errors.any?
+  %h3 Please fix these errors:
+  %ul
+    - @posting.errors.full_messages.each do |message|
+      %li= message

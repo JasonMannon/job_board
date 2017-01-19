@@ -1,0 +1,17 @@
+= @posting.job_title
+= @posting.company_name
+= @posting.company_location
+= @posting.kind
+= @posting.description.html_safe
+= @posting.application_instructions.html_safe
+
+= form_for @posting do |f|
+  = f.hidden_field :user_id, value: current_user.id
+  = f.hidden_field :job_title, value: @posting.job_title
+  = f.hidden_field :company_name, value: @posting.company_name
+  = f.hidden_field :company_location, value: @posting.company_location
+  = f.hidden_field :kind, value: @posting.kind
+  = f.hidden_field :description, value: @posting.description
+  = f.hidden_field :application_instructions, value: @posting.application_instructions
+  = f.submit "Edit" 
+  = f.submit "Create Posting"  

@@ -1,3 +1,6 @@
 .container  
-  = render 'form'
+  - if params[:commit] == "Preview"
+    = render 'preview'
+  - else
+    = render 'form'
   

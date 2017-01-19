@@ -4,10 +4,13 @@ class PostingsController < ApplicationController
     @posting = Posting.new(posting_params)
 
     authorize(@posting)
-    if @posting.save
+
+    if params[:commit] == 'Preview'
+      render :new
+    elsif @posting.save
       redirect_to @posting
     else
-      render :new, flash: "test"
+      render :new
     end
   end
   

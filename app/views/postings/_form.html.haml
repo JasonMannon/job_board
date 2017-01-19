@@ -1,9 +1,5 @@
-- if @posting.errors.any?
-  %h3 Please fix these errors:
-  %ul
-    - @posting.errors.full_messages.each do |message|
-      %li= message
-      
+= render 'errors'
+
 = form_for @posting do |f|
   = f.hidden_field :user_id, value: current_user.id
   .form-group
@@ -31,4 +27,5 @@
     %br
     = f.text_area :application_instructions, requried: true, class: 'froala-editor'
   %br
-  = f.submit "Create Posting"   
+  = f.submit "Create Posting"  
+  = f.submit "Preview" 
