@@ -7,6 +7,8 @@ class PostingPolicy
   end
 
   def create?
-    user.persisted?
+    !user.nil? && user.persisted?
   end
+  
+  alias_method :new?, :create?
 end

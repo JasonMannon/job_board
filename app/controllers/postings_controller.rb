@@ -15,6 +15,12 @@ class PostingsController < ApplicationController
     @posting = Posting.find(params[:posting])
   end
   
+  def new
+    @posting = Posting.new
+
+    authorize(@posting)
+  end
+  
   private
   
   def posting_params

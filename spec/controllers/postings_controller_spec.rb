@@ -11,7 +11,7 @@ describe PostingsController do
       
       context 'all params are valid' do
         it 'can create a posting' do
-          post :create, posting: attrs
+          post :create, params: { posting: attrs }
           
           expect(response).to redirect_to(postings_path) 
         end        
@@ -21,7 +21,7 @@ describe PostingsController do
         let(:attrs) { {user_id: user.id, description: "some description", title: "Web Developer", kind: "development",
                        company_name: "Microsoft", company_location: "Seattle, Wa"}}         
         it 'renders view with error message' do
-          post :create, posting: attrs
+          post :create, params: { posting: attrs }
 
           expect(response).to render_template(:new)           
         end
