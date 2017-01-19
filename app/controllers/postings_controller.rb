@@ -5,14 +5,14 @@ class PostingsController < ApplicationController
 
     authorize(@posting)
     if @posting.save
-      redirect_to postings_path
+      redirect_to @posting
     else
       render :new, flash: "test"
     end
   end
   
   def show
-    @posting = Posting.find(params[:posting])
+    @posting = Posting.find(params[:id])
   end
   
   def new
