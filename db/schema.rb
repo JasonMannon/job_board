@@ -18,13 +18,13 @@ ActiveRecord::Schema.define(version: 20170119014648) do
   create_table "postings", force: :cascade do |t|
     t.integer  "user_id"
     t.text     "description"
-    t.string   "title"
-    t.integer  "kind",                     default: 0
+    t.string   "job_title"
+    t.integer  "kind"
     t.string   "company_name"
     t.string   "company_location"
     t.text     "application_instructions"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.index ["user_id"], name: "index_postings_on_user_id", using: :btree
   end
 

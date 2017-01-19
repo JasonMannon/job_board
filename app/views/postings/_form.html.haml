@@ -1,0 +1,34 @@
+- if @posting.errors.any?
+  %h3 Please fix these errors:
+  %ul
+    - @posting.errors.full_messages.each do |message|
+      %li= message
+      
+= form_for @posting do |f|
+  = f.hidden_field :user_id, value: current_user.id
+  .form-group
+    = f.label :job_title
+    %br
+    = f.text_field :job_title, autofocus: true, requried: true
+  .form-group
+    = f.label :kind
+    %br
+    = f.select(:kind, options_for_select(Posting.kinds.keys)) 
+  .form-group
+    = f.label :description
+    %br
+    = f.text_area :description, requried: true
+  .form-group
+    = f.label :company_name
+    %br
+    = f.text_field :company_name, requried: true
+  .form-group
+    = f.label :company_location
+    %br
+    = f.text_field :company_location, requried: true
+  .form-group
+    = f.label :application_instructions
+    %br
+    = f.text_area :application_instructions, requried: true
+  %br
+  = f.submit "Create Posting"    

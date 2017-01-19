@@ -3,7 +3,7 @@ require 'rails_helper'
 describe PostingsController do
   context 'authorizations' do
     let(:user) { create(:user) }
-    let(:attrs) { {user_id: user.id, description: "some description", title: "Web Developer", kind: "development",
+    let(:attrs) { {user_id: user.id, description: "some description", job_title: "Web Developer", kind: Posting.kinds.keys.first,
                    company_name: "Microsoft", company_location: "Seattle, Wa", application_instructions: "test"}} 
                       
     context 'user is signed in' do      
@@ -18,7 +18,7 @@ describe PostingsController do
       end
       
       context 'params are not valid' do
-        let(:attrs) { {user_id: user.id, description: "some description", title: "Web Developer", kind: "development",
+        let(:attrs) { {user_id: user.id, description: "some description", job_title: "Web Developer", kind: Posting.kinds.keys.first,
                        company_name: "Microsoft", company_location: "Seattle, Wa"}}         
         it 'renders view with error message' do
           post :create, params: { posting: attrs }
