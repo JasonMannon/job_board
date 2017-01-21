@@ -44,6 +44,8 @@ gem "wysiwyg-rails"
 gem 'sidekiq'
 gem 'redis', '~>3.2'
 
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
@@ -53,6 +55,7 @@ group :development, :test do
   gem 'faker'
   gem 'shoulda-matchers'
   gem 'rails-controller-testing'
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -68,6 +71,7 @@ group :test do
   gem 'database_cleaner'
   gem 'timecop'
   gem 'rspec-sidekiq'
+  gem 'stripe-ruby-mock', '~> 2.4.0', :require => 'stripe_mock'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

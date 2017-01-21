@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   root "home#index"
   
   resources :postings, only: [:create, :show, :new]
+  
+  resources :transactions, only: [:create]
 end

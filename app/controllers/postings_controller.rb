@@ -8,7 +8,8 @@ class PostingsController < ApplicationController
     if params[:commit] == 'Preview'
       render :new
     elsif @posting.save
-      redirect_to @posting
+      render :new
+      # redirect_to @posting
     else
       render :new
     end

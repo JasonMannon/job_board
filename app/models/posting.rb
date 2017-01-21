@@ -3,6 +3,7 @@ class Posting < ActiveRecord::Base
                          :company_location, :application_instructions
   
   belongs_to :user
+  has_many :transactions
   
   enum kind: { programming: 0, marketing: 1, design: 2, devops: 3, customer_support: 4}
   

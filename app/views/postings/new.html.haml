@@ -1,6 +1,7 @@
 .container  
   - if params[:commit] == "Preview"
     = render 'preview'
+  - elsif @posting.persisted?
+    = render 'transactions/payment_form'
   - else
     = render 'form'
-  

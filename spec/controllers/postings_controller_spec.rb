@@ -13,7 +13,7 @@ describe PostingsController do
         it 'can create a posting' do
           post :create, params: { posting: attrs }
           
-          expect(response).to redirect_to(posting_path(Posting.last.id)) 
+          expect(response).to render_template(:new)
         end        
       end
       

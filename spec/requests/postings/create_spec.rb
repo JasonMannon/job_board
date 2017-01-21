@@ -11,7 +11,7 @@ describe "POST /postings" do
     it 'allows user to create a posting' do
       post "/postings", params: { posting: attrs }
 
-      expect(response.status).to eq(302)
+      expect(response.status).to render_template(:new)
     end
     
     context 'params[:commit] == "Preview"' do
