@@ -10,4 +10,12 @@ RSpec.describe Posting do
     it { is_expected.to validate_presence_of(:company_location) }
     it { is_expected.to validate_presence_of(:application_instructions) }
   end
+  
+  context '#renew' do
+    let(:posting) { create(:posting) }
+    
+    it 'adds 30 days to the expires at attribute' do
+      expect{posting.renew}.to change{posting.expires_at}.by(30.days)
+    end
+  end
 end

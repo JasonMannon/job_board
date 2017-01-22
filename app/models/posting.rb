@@ -9,6 +9,13 @@ class Posting < ActiveRecord::Base
   
   after_create :queue_job
   
+  scope :active, -> { where('expired IS FALSE') }
+  scope :with_kind, -> (kinds) { where(kind: kinds[kind]) }
+  
+  def renew
+    self.update_attribute(:expires_at, self.expires_at + 30.days) 
+  end
+  
   private
   
   def queue_job

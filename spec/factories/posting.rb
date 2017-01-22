@@ -7,5 +7,21 @@ FactoryGirl.define do
     company_name { Faker::Company.name }
     company_location { Faker::Address.state }
     application_instructions  { Faker::Lorem.words(4) }
+    
+    trait :programming do
+      kind "programming"
+    end
+    
+    trait :marketing do
+      kind "marketing"
+    end
+    
+    trait :design do
+      kind "design"
+    end
+    
+    trait :customer_support do
+      kind "customer_support"
+    end
   end
 end
