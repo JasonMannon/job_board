@@ -1,46 +1,5 @@
 .container
-  %h2 Sign up
-
-  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    = devise_error_messages!
-    .field
-      = f.label :email
-      %br/
-      = f.email_field :email, autofocus: true
-    .field
-      = f.label :password
-      - if @minimum_password_length
-        %em
-          (#{@minimum_password_length} characters minimum)
-      %br/
-      = f.password_field :password, autocomplete: "off"
-    .field
-      = f.label :password_confirmation
-      %br/
-      = f.password_field :password_confirmation, autocomplete: "off"
-    .actions
-      = f.submit "Sign up"
-  = render "devise/shared/links"
-
-
-  %h2 Log in
-  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    .field
-      = f.label :email
-      %br/
-      = f.email_field :email, autofocus: true
-    .field
-      = f.label :password
-      %br/
-      = f.password_field :password, autocomplete: "off"
-    - if devise_mapping.rememberable?
-      .field
-        = f.check_box :remember_me
-        = f.label :remember_me
-    .actions
-      = f.submit "Log in"
-  = render "devise/shared/links"
-
+  %br
   - @postings.each do |pg|
     = pg[0].capitalize
     %table.table.table-bordered
