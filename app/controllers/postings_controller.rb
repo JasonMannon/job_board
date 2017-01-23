@@ -9,7 +9,6 @@ class PostingsController < ApplicationController
       render :new
     elsif @posting.save
       render :new
-      # redirect_to @posting
     else
       render :new
     end

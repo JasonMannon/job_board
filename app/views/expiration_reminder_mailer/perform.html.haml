@@ -1,0 +1,4 @@
+= "Your posting titled #{@posting.job_title} is going to expire in 5 days"
+
+= "Click here to renew your listing"
+= link_to 'Renew', "http://localhost:3000/#{@posting.id}/renew"

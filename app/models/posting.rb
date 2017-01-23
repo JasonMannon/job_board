@@ -7,10 +7,10 @@ class Posting < ActiveRecord::Base
   
   enum kind: { programming: 0, marketing: 1, design: 2, devops: 3, customer_support: 4}
   
-  after_create :queue_job
+  after_create :queue_exipration_job
+  after_create :queue_reminder_job
   
   scope :active, -> { where('expired IS FALSE') }
-  scope :with_kind, -> (kinds) { where(kind: kinds[kind]) }
   
   def renew
     self.update_attribute(:expires_at, self.expires_at + 30.days) 
@@ -18,7 +18,11 @@ class Posting < ActiveRecord::Base
   
   private
   
-  def queue_job
+  def queue_exipration_job
     CheckExpiredPostingsJob.set(wait: 30.days).perform_later(self)
+  end
+  
+  def queue_reminder_job
+    ExpirationReminderJob.set(wait: 25.days).perform_later(self)
   end
 end
