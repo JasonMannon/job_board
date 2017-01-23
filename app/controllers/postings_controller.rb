@@ -1,5 +1,34 @@
 class PostingsController < ApplicationController
   
+  def index
+    if params[:user_id] && (current_user && current_user.id == params[:user_id].to_i)
+      @user = current_user
+      @postings = @user.postings
+    else
+      redirect_to root_url
+    end
+  end
+  
+  def edit
+    @posting = Posting.find(params[:id])
+    
+    authorize(@posting)
+    
+    render :edit
+  end
+  
+  def update
+    @posting = Posting.find(params[:id])
+
+    authorize(@posting)
+    
+    if @posting.update(posting_params)
+      redirect_to postings_path(@posting)
+    else
+      render :edit
+    end
+  end
+  
   def create
     @posting = Posting.new(posting_params)
 

@@ -57,4 +57,6 @@
                 = f.submit "Log in"
             = render "devise/shared/links"
 - else
+  = link_to 'My Postings', user_postings_path(current_user)
+  |
   = link_to('Logout', destroy_user_session_path, :method => :delete)

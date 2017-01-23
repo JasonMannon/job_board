@@ -1,0 +1,8 @@
+.container
+  %table.table.table-bordered
+    %tbody
+      - @postings.each do |p|
+        %tr
+          %td
+            = p.company_name
+            = p.job_title

@@ -12,9 +12,12 @@ class TransactionsController < ApplicationController
     if transaction.save
       posting = Posting.find(params[:posting_id])
 
-      if params[:renewal] 
-        posting.update_attributes(expires_at: posting.expires_at + 30.days, expired: false)
+      if params[:renewal]
+        posting.expires_at = (posting.expires_at + 30.days)
       end
+      
+      posting.expired = false
+      posting.save
       
       redirect_to posting_path(posting) 
     else

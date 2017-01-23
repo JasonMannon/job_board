@@ -27,5 +27,8 @@
     %br
     = f.text_area :application_instructions, requried: true, class: 'froala-editor'
   %br
-  = f.submit "Create Posting"  
-  = f.submit "Preview" 
+  - if @posting.persisted?
+    = f.submit 'Update'
+  - else
+    = f.submit "Create Posting"  
+    = f.submit "Preview"   
