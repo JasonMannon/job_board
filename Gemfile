@@ -72,6 +72,7 @@ group :test do
   gem 'timecop'
   gem 'rspec-sidekiq'
   gem 'stripe-ruby-mock', '~> 2.4.0', :require => 'stripe_mock'
+  gem 'simplecov', :require => false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
