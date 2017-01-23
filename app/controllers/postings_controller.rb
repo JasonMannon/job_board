@@ -20,8 +20,15 @@ class PostingsController < ApplicationController
   
   def new
     @posting = Posting.new
+    @amount = Posting::POSTING_FEE
 
     authorize(@posting)
+  end
+  
+  def renew
+    @posting = Posting.find(params[:posting_id])
+    @renewal = true
+    @amount = Posting::RENEWAL_FEE
   end
   
   private

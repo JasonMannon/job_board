@@ -4,12 +4,16 @@ class TransactionsController < ApplicationController
     @charge = JobBoard::Stripe::CreateCharge.new({token: params[:stripeToken], 
                                                  email: current_user.email,
                                                  posting_id: params[:posting_id],
-                                                 amount: 150}).execute
+                                                 amount: params[:amount].to_i}).execute
 
     transaction = Transaction.new(transaction_params)
     
     if transaction.save
       posting = Posting.find(params[:posting_id])
+
+      if params[:renewal] 
+        posting.update_attributes(expires_at: posting.expires_at + 30.days, expired: false)
+      end
       
       redirect_to posting_path(posting) 
     else

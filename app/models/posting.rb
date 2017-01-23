@@ -1,4 +1,7 @@
 class Posting < ActiveRecord::Base
+  POSTING_FEE = 150
+  RENEWAL_FEE = 50
+  
   validates_presence_of :user_id, :description, :job_title, :kind, :company_name,
                          :company_location, :application_instructions
   

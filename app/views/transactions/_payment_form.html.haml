@@ -6,6 +6,8 @@
   %span.payment-errors
   
   = hidden_field_tag :posting_id, @posting.id
+  = hidden_field_tag :amount, @amount
+  = hidden_field_tag :renewal, @renewal
 
   = label_tag "Card Number", nil, required: true
   .control-group
