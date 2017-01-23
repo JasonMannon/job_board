@@ -7,6 +7,7 @@ class TransactionsController < ApplicationController
                                                  amount: params[:amount].to_i}).execute
 
     transaction = Transaction.new(transaction_params)
+    authorize(transaction)
     
     if transaction.save
       posting = Posting.find(params[:posting_id])
