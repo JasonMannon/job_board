@@ -4,5 +4,11 @@
       - @postings.each do |p|
         %tr
           %td
-            = p.company_name
-            = p.job_title
+            %b
+              = p.company_name
+            &nbsp;
+            = link_to p.job_title, posting_path(p)
+            &nbsp;
+            = link_to "Edit", "/users/#{current_user.id}/postings/#{p.id}/edit"
+            .pull-right
+              = p.created_at.strftime("%a %e")

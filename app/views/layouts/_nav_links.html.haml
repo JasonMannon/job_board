@@ -1,62 +1,77 @@
-- unless current_user
-  .row
-    %button.btn.btn-primary.btn-lg{"data-target" => "#signUpModal", "data-toggle" => "modal", :type => "button"}
-      Sign Up
-    #signUpModal.modal.fade{"aria-labelledby" => "signUpModal", :role => "dialog", :tabindex => "-1"}
-      .modal-dialog{:role => "document"}
-        .modal-content
-          .modal-header
-            %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-              %span{"aria-hidden" => "true"} ×
-          .modal-body
-            = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-              = devise_error_messages!
-              .field
-                = f.label :email
-                %br/
-                = f.email_field :email, autofocus: true
-              .field
-                = f.label :password
-                - if @minimum_password_length
-                  %em
-                    (#{@minimum_password_length} characters minimum)
-                %br/
-                = f.password_field :password, autocomplete: "off"
-              .field
-                = f.label :password_confirmation
-                %br/
-                = f.password_field :password_confirmation, autocomplete: "off"
-              .actions
-                = f.submit "Sign up", class: "btn btn-primary"
-            = render "devise/shared/links"
-            
-    %button.btn.btn-primary.btn-lg{"data-target" => "#signInModal", "data-toggle" => "modal", :type => "button"}
-      Sign In
-    #signInModal.modal.fade{"aria-labelledby" => "signInModal", :role => "dialog", :tabindex => "-1"}
-      .modal-dialog{:role => "document"}
-        .modal-content
-          .modal-header
-            %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-              %span{"aria-hidden" => "true"} ×
-          .modal-body
-            %h2 Log in
-            = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-              .field
-                = f.label :email
-                %br/
-                = f.email_field :email, autofocus: true
-              .field
-                = f.label :password
-                %br/
-                = f.password_field :password, autocomplete: "off"
-              - if devise_mapping.rememberable?
-                .field
-                  = f.check_box :remember_me
-                  = f.label :remember_me
-              .actions
-                = f.submit "Log in"
-            = render "devise/shared/links"
-- else
-  = link_to 'My Postings', user_postings_path(current_user)
-  |
-  = link_to('Logout', destroy_user_session_path, :method => :delete)
+%nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{:href => root_url} Job Board
+    #navbar.navbar-collapse.collapse
+      %ul.nav.navbar-nav
+      %ul.nav.navbar-nav.navbar-right
+        - unless current_user
+          %li
+            = link_to "Create Listing", "#", "data-toggle" => "modal", "data-target" => "#signUpModal"  
+          %li
+            = link_to "Sign In", "#", "data-toggle" => "modal", "data-target" => "#signInModal"              
+        - else
+          %li
+            = link_to 'My Postings', user_postings_path(current_user)
+          %li
+            = link_to "New Posting", new_posting_path
+          %li
+            = link_to('Logout', destroy_user_session_path, :method => :delete)        
+          
+#signUpModal.modal.fade{"aria-labelledby" => "signUpModal", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = devise_error_messages!
+          .field
+            = f.label :email
+            %br/
+            = f.email_field :email, autofocus: true
+          .field
+            = f.label :password
+            - if @minimum_password_length
+              %em
+                (#{@minimum_password_length} characters minimum)
+            %br/
+            = f.password_field :password, autocomplete: "off"
+          .field
+            = f.label :password_confirmation
+            %br/
+            = f.password_field :password_confirmation, autocomplete: "off"
+          .actions
+            = f.submit "Sign up", class: "btn btn-primary"
+        = render "devise/shared/links"          
+
+#signInModal.modal.fade{"aria-labelledby" => "signInModal", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        %h2 Log in
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .field
+            = f.label :email
+            %br/
+            = f.email_field :email, autofocus: true
+          .field
+            = f.label :password
+            %br/
+            = f.password_field :password, autocomplete: "off"
+          - if devise_mapping.rememberable?
+            .field
+              = f.check_box :remember_me
+              = f.label :remember_me
+          .actions
+            = f.submit "Log in"
+        = render "devise/shared/links"

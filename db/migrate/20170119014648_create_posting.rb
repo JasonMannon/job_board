@@ -7,6 +7,7 @@ class CreatePosting < ActiveRecord::Migration[5.0]
       t.column :kind, :integer, required: true
       t.column :company_name, :string, required: true
       t.column :company_location, :string, required: true
+      t.column :company_url, :string, required: true
       t.column :application_instructions, :text, required: true
       
       t.timestamps null: false

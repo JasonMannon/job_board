@@ -23,7 +23,7 @@ class PostingsController < ApplicationController
     authorize(@posting)
     
     if @posting.update(posting_params)
-      redirect_to postings_path(@posting)
+      redirect_to posting_path(@posting)
     else
       render :edit
     end
@@ -34,9 +34,10 @@ class PostingsController < ApplicationController
 
     authorize(@posting)
 
-    if params[:commit] == 'Preview'
+    if (params[:commit] == 'Preview') || (params[:commit] == "Edit")
       render :new
     elsif @posting.save
+      @amount = Posting::POSTING_FEE
       render :new
     else
       render :new

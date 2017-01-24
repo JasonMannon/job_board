@@ -1,8 +1,8 @@
 .container
+  %h1 Job Board
+  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia pharetra erat in pellentesque. In sagittis ultrices malesuada. 
   .panel.panel-primary
     .panel-body
-      %h3 Job Board
-      %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia pharetra erat in pellentesque. In sagittis ultrices malesuada. 
       - @postings.each do |pg|
         %h3
           = pg[0].capitalize
@@ -12,5 +12,9 @@
               - pg[1].each do |p|
                 %tr
                   %td
-                    = p.company_name
-                    = p.job_title
+                    %b
+                      = p.company_name
+                    &nbsp;
+                    = link_to p.job_title, posting_path(p)
+                    .pull-right
+                      = p.created_at.strftime("%a %e")

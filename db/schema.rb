@@ -22,10 +22,11 @@ ActiveRecord::Schema.define(version: 20170123224729) do
     t.integer  "kind"
     t.string   "company_name"
     t.string   "company_location"
+    t.string   "company_url"
     t.text     "application_instructions"
     t.datetime "created_at",                                               null: false
     t.datetime "updated_at",                                               null: false
-    t.datetime "expires_at",               default: '2017-02-23 00:07:57'
+    t.datetime "expires_at",               default: '2017-02-23 13:59:10'
     t.boolean  "expired",                  default: true
     t.index ["user_id"], name: "index_postings_on_user_id", using: :btree
   end

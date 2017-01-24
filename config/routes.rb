@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   
   root "home#index"
   
-  resources :postings, only: [:create, :show, :new] do
+  resources :postings, only: [:create, :show, :new, :update] do
     get '/renew', to: "postings#renew"
   end
   

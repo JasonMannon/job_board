@@ -2,6 +2,7 @@
   - if params[:commit] == "Preview"
     = render 'preview'
   - elsif @posting.persisted?
+    %h2 Post this listing for 30 days for $150
     = render 'transactions/payment_form'
   - else
     = render 'form'

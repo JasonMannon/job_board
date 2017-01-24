@@ -1,7 +1,29 @@
 .container
-  = @posting.job_title
-  = @posting.company_name
-  = @posting.company_location
-  = @posting.kind
-  = @posting.description.html_safe
-  = @posting.application_instructions.html_safe
+  %hr
+  .row
+    .col-md-8
+      %h2
+        = @posting.job_title
+      = "Posted #{@posting.created_at.strftime("%b %e")}"
+      %br
+      %br
+      %h4
+        %b
+          = @posting.company_name
+        %br
+        = "Location: #{@posting.company_location}"
+        %br
+          = link_to @posting.company_url, @posting.company_url
+    .col-md-4
+      .company-logo-img
+        = image_tag "https://placeholdit.imgix.net/~text?txtsize=33&txt=150%C3%97150&w=150&h=150"
+  %hr
+  .row 
+    .col-md-8
+      = @posting.description.html_safe    
+    .col-md-4
+  %hr
+  .well
+    %h4
+      %b How to Apply:
+    = @posting.application_instructions.html_safe
