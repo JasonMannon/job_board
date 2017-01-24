@@ -9,7 +9,7 @@ class CheckExpiredPostingsJob < ApplicationJob
   
   def set_expired(posting)
     if posting.expires_at <= Time.now && !posting.expired
-      posting.expired = true
+      posting.update_attribute(:expired, true)
     elsif !posting.expired
       CheckExpiredPostingsJob.set(wait: 1.days).perform_later(posting)
     end

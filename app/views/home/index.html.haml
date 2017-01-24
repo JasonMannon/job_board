@@ -1,11 +1,16 @@
 .container
-  %br
-  - @postings.each do |pg|
-    = pg[0].capitalize
-    %table.table.table-bordered
-      %tbody
-        - pg[1].each do |p|
-          %tr
-            %td
-              = p.company_name
-              = p.job_title
+  .panel.panel-primary
+    .panel-body
+      %h3 Job Board
+      %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia pharetra erat in pellentesque. In sagittis ultrices malesuada. 
+      - @postings.each do |pg|
+        %h3
+          = pg[0].capitalize
+        .panel.panel-default
+          %table.table.table-striped
+            %tbody
+              - pg[1].each do |p|
+                %tr
+                  %td
+                    = p.company_name
+                    = p.job_title

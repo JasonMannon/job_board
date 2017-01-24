@@ -13,7 +13,7 @@ class Posting < ActiveRecord::Base
   after_create :queue_exipration_job
   after_create :queue_reminder_job
   
-  scope :active, -> { where('expired IS FALSE') }
+  scope :active, -> { where(expired: false) }
   
   def renew
     self.update_attribute(:expires_at, self.expires_at + 30.days) 

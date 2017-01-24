@@ -20,6 +20,10 @@ FactoryGirl.define do
       kind "design"
     end
     
+    trait :devops do
+      kind 'devops'
+    end
+    
     trait :customer_support do
       kind "customer_support"
     end
