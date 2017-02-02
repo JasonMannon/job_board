@@ -5,25 +5,16 @@
   `bundle exec sidekiq`
 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Job Board
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+```
+rake db:create db:migrate db:test:prepare
+bundle install
+redis-server
+sidekiq
+rake db:seed
+```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Now you can access the running site from your browser: http://localhost:3000
