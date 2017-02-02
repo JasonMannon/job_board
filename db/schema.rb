@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20170123224729) do
     t.text     "application_instructions"
     t.datetime "created_at",                                               null: false
     t.datetime "updated_at",                                               null: false
-    t.datetime "expires_at",               default: '2017-02-23 13:59:10'
+    t.datetime "expires_at",               default: '2017-03-04 23:41:19'
     t.boolean  "expired",                  default: true
     t.index ["user_id"], name: "index_postings_on_user_id", using: :btree
   end

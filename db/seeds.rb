@@ -9,33 +9,33 @@ def html_description
 end
 
 # Create programming postings
-FactoryGirl.create(:posting, :programming, description: html_description, user: @user, expired: false)
+FactoryGirl.create(:posting, :programming, description: html_description, user: @user, expired: false, created_at: 10.days.ago)
 FactoryGirl.create(:posting, :programming, description: html_description, user: @user, expires_at: 31.days.ago, expired: true)
-FactoryGirl.create(:posting, :programming, description: html_description, user: @user, expires_at: 50.days.from_now, expired: false)
-FactoryGirl.create(:posting, :programming, description: html_description, user: @user, expired: false)
+FactoryGirl.create(:posting, :programming, description: html_description, user: @user, expires_at: 50.days.from_now, expired: false, created_at: 25.days.ago)
+FactoryGirl.create(:posting, :programming, description: html_description, user: @user, expired: false, created_at: 3.days.ago)
 FactoryGirl.create(:posting, :programming, description: html_description, user: @user, expired: false)
 
 # Create marketing postings
-FactoryGirl.create(:posting, :marketing, description: html_description, user: @user, expired: false)
+FactoryGirl.create(:posting, :marketing, description: html_description, user: @user, expired: false, created_at: 10.days.ago)
 FactoryGirl.create(:posting, :marketing, description: html_description, user: @user, expires_at: 31.days.ago, expired: true)
-FactoryGirl.create(:posting, :marketing, description: html_description, user: @user, expires_at: 50.days.from_now, expired: false)
-FactoryGirl.create(:posting, :marketing, description: html_description, user: @user, expires_at: 35.days.from_now, expired: false)
+FactoryGirl.create(:posting, :marketing, description: html_description, user: @user, expires_at: 50.days.from_now, expired: false, created_at: 25.days.ago)
+FactoryGirl.create(:posting, :marketing, description: html_description, user: @user, expires_at: 35.days.from_now, expired: false, created_at: 3.days.ago)
 
 # Create design postings
-FactoryGirl.create(:posting, :design, description: html_description, user: @user, expired: false)
-FactoryGirl.create(:posting, :design, description: html_description, user: @user, expires_at: 31.days.ago, expired: true)
+FactoryGirl.create(:posting, :design, description: html_description, user: @user, expired: false, created_at: 10.days.ago)
+FactoryGirl.create(:posting, :design, description: html_description, user: @user, expires_at: 31.days.ago, expired: true, created_at: 25.days.ago)
 FactoryGirl.create(:posting, :design, description: html_description, user: @user, expires_at: 50.days.from_now, expired: false)
-FactoryGirl.create(:posting, :design, description: html_description, user: @user, expires_at: 40.days.from_now, expired: false)
+FactoryGirl.create(:posting, :design, description: html_description, user: @user, expires_at: 40.days.from_now, expired: false, created_at: 3.days.ago)
 
 # Create devops postings
-FactoryGirl.create(:posting, :devops, description: html_description, user: @user, expired: false)
-FactoryGirl.create(:posting, :devops, description: html_description, user: @user, expired: false)
+FactoryGirl.create(:posting, :devops, description: html_description, user: @user, expired: false, created_at: 10.days.ago)
+FactoryGirl.create(:posting, :devops, description: html_description, user: @user, expired: false, created_at: 25.days.ago)
 FactoryGirl.create(:posting, :devops, description: html_description, user: @user, expires_at: 31.days.ago, expired: true)
-FactoryGirl.create(:posting, :devops, description: html_description, user: @user, expires_at: 50.days.from_now, expired: false)
-FactoryGirl.create(:posting, :devops, description: html_description, user: @user, expires_at: 50.days.from_now, expired: false)
+FactoryGirl.create(:posting, :devops, description: html_description, user: @user, expires_at: 50.days.from_now, expired: false, created_at: 25.days.ago)
+FactoryGirl.create(:posting, :devops, description: html_description, user: @user, expires_at: 50.days.from_now, expired: false, created_at: 3.days.ago)
 
 # Create customer_support postings
-FactoryGirl.create(:posting, :customer_support, description: html_description, user: @user)
+FactoryGirl.create(:posting, :customer_support, description: html_description, user: @user, created_at: 10.days.ago, created_at: 25.days.ago)
 FactoryGirl.create(:posting, :customer_support, description: html_description, user: @user, expires_at: 31.days.ago, expired: true)
 FactoryGirl.create(:posting, :customer_support, description: html_description, user: @user, expires_at: 50.days.from_now)
 
