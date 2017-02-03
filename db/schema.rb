@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170123224729) do
+ActiveRecord::Schema.define(version: 20170203004831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,8 +26,9 @@ ActiveRecord::Schema.define(version: 20170123224729) do
     t.text     "application_instructions"
     t.datetime "created_at",                                               null: false
     t.datetime "updated_at",                                               null: false
-    t.datetime "expires_at",               default: '2017-03-04 23:41:19'
+    t.datetime "expires_at",               default: '2017-03-05 01:12:59'
     t.boolean  "expired",                  default: true
+    t.string   "logo"
     t.index ["user_id"], name: "index_postings_on_user_id", using: :btree
   end
 

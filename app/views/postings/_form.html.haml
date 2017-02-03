@@ -23,6 +23,10 @@
     %br
     = f.text_field :company_location, requried: true
   .form-group
+    = f.label :logo
+    %br
+    = f.file_field :logo
+  .form-group
     = f.label :application_instructions
     %br
     = f.text_area :application_instructions, requried: true, class: 'froala-editor'

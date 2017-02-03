@@ -65,7 +65,7 @@ class PostingsController < ApplicationController
   
   def posting_params
     params.require(:posting).permit(:user_id, :description, :job_title, :kind, :company_name, :company_location,
-                                    :application_instructions)
+                                    :application_instructions, :logo)
   end
   
 end

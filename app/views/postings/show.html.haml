@@ -16,7 +16,7 @@
           = link_to @posting.company_url, @posting.company_url
     .col-md-4
       .company-logo-img
-        = image_tag "https://placeholdit.imgix.net/~text?txtsize=33&txt=150%C3%97150&w=150&h=150"
+        = image_tag @posting.logo.thumb
   %hr
   .row 
     .col-md-8

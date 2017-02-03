@@ -1,4 +1,6 @@
 class Posting < ActiveRecord::Base
+  mount_uploader :logo, LogoUploader
+  
   POSTING_FEE = 150
   RENEWAL_FEE = 50
   
