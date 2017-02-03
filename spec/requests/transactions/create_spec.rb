@@ -6,7 +6,12 @@ describe "POST /transactions" do
   let(:posting) { create(:posting) }
   let(:params) { { stripeToken: stripe_helper.generate_card_token, posting_id: posting.id, amount: 150 } }
   before { StripeMock.start }
-  after { StripeMock.stop }     
+  after { StripeMock.stop } 
+  
+  before do
+    t = Time.local(2017, 9, 1, 10, 5, 0)
+    Timecop.travel(t)    
+  end    
                    
   context "user is logged in" do    
     before { sign_in user }

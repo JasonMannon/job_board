@@ -19,6 +19,10 @@ class Posting < ActiveRecord::Base
     self.update_attribute(:expires_at, self.expires_at + 30.days) 
   end
   
+  def new?
+    self.created_at >= 5.days.ago.beginning_of_day
+  end
+  
   private
   
   def queue_exipration_job

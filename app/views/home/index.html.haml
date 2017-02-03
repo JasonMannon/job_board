@@ -13,8 +13,10 @@
                 %tr
                   %td
                     %b
-                      = p.company_name
+                      = "#{p.company_name}"
                     &nbsp;
                     = link_to p.job_title, posting_path(p)
+                    &nbsp;
+                    = new_posting?(p)
                     .pull-right
                       = p.created_at.strftime("%b, %e")
